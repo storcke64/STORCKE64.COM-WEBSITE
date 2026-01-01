@@ -1,1 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storcke64 | Linux Software Packaging & Engineering</title>
+    <style>
+        :root {
+            --navy: #050a1f;
+            --accent-orange: #ff8c61;
+            --accent-gradient: linear-gradient(135deg, #ff8c61 0%, #ff5e3a 100%);
+            --text-light: #e0e6ed;
+            --card-bg: #0d1430;
+            --footer-bg: #030712;
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--navy);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Navigation Setup (Optimized for 400x100 Logo) --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background: rgba(5, 10, 31, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 140, 97, 0.15);
+            height: 120px; /* Accommodates 100px logo height */
+        }
+
+        .logo-link {
+            display: block;
+            flex-shrink: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.85;
+        }
+
+        .site-logo {
+            display: block;
+            width: 400px;  /* Exact dimensions requested */
+            height: 100px;
+            object-fit: contain; /* Handles transparent background perfectly */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 120px 8%;
+            text-align: center;
+            background: radial-gradient(circle at center, #101b44 0%, #050a1f 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 850px;
+            margin: 0 auto 40px;
+            color: #cbd5e0;
+        }
+
+        .cta-button {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 140, 97, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 140, 97, 0.5);
+        }
+
+        /* --- General Layout --- */
+        .section-container {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-orange);
+            background: #111a3d;
+        }
+
+        .card h3 {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        /* --- App Portfolio Grid (With Logos) --- */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .app-card {
+            display: flex;
+            flex-direction: column;
+            background: #161f42;
+            border-radius: 20px;
+            padding: 35px;
+            border-bottom: 4px solid var(--accent-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .app-logo-container {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+        }
+
+        .project-logo {
+            max-width: 85%;
+            max-height: 140px;
+            object-fit: contain;
+        }
+
+        .maintainer-tag {
+            display: inline-block;
+            background: rgba(255, 140, 97, 0.15);
+            color: var(--accent-orange);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: auto; /* Pushes tag to bottom */
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--footer-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #718096;
+        }
+
+        /* Responsive Logic */
+        @media (max-width: 1100px) {
+            .grid-container, .app-grid { grid-template-columns: 1fr; }
+            nav { height: auto; flex-direction: column; padding: 20px; gap: 20px; }
+            .site-logo { width: 300px; height: 75px; }
+            .hero h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo-link">
+        <img src="storcke64-logo.png" alt="Storcke64 Technology Consulting" class="site-logo">
+    </a>
+    <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#apps">Portfolio</a></li>
+        <li><a href="#benefits">Institutional</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>Scaling Linux Software with Flatpak</h1>
+    <p>We specialize in Linux software packaging and the implementation of revolutionary software technology. We build the bridge between institutional needs and the Linux desktop.</p>
+    <a href="mailto:contact@storcke64.com" class="cta-button">Get a Packaging Consultation</a>
+</section>
+
+<div class="section-container" id="services">
+    <h2 class="section-title">Our Expertise</h2>
+    <div class="grid-container">
+        <div class="card">
+            <h3>Flatpak Engineering</h3>
+            <p>We create clean, professional Flatpak manifests and handle the technical heavy lifting of sandboxing and permission management.</p>
+        </div>
+        <div class="card">
+            <h3>Flathub Approval</h3>
+            <p>We assist with the entire approval process for the Flathub app store, ensuring your software meets community standards and security checks.</p>
+        </div>
+        <div class="card Green">
+            <h3>Software Implementation</h3>
+            <p>Implementing revolutionary software technology for organizations that require stability, performance, and long-term support.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="benefits" style="background-color: #09112e;">
+    <h2 class="section-title">Flatpak for Industry & Institutions</h2>
+    <div class="grid-container">
+        <div class="card">
+            <h3>Sandboxed Security</h3>
+            <p>Isolate critical industrial software from the host system, protecting the core infrastructure from application-level vulnerabilities.</p>
+        </div>
+        <div class="card">
+            <h3>Immutable Updates</h3>
+            <p>Atomic updates ensure that missions-critical workstations remain stable; updates are safe, reproducible, and easily reversible.</p>
+        </div>
+        <div class="card">
+            <h3>Universal Standards</h3>
+            <p>Maintain one single package that runs flawlessly across RHEL, Ubuntu, Fedora, and Debian environments without re-engineering.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section-container" id="apps">
+    <h2 class="section-title">Featured Flatpak Projects</h2>
+    <div class="app-grid">
+        <div class="app-card">
+            <div class="app-logo-container">
+                <img src="rc-basic-logo.png" alt="RC Basic Studio Logo" class="project-logo">
+            </div>
+            <div class="app-content">
+                <h3>RC Basic Studio</h3>
+                <p>A powerful dialect of the BASIC programming language. Storcke64 identified the potential of this tool and officially packaged it as a Flatpak to enable universal Linux access.</p>
+                <div style="margin-top: 15px;">
+                    <span class="maintainer-tag">Official Maintainer: Storcke64</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-card">
+            <div class="app-logo-container">
+                <img src="hts-logo.jpg" alt="Human Time System Logo" class="project-logo">
+            </div>
+            <div class="app-content">
+                <h3>Human Time System</h3>
+                <p>The desktop client for the Human Time System. Engineered for precision and deployed via Flatpak to ensure isolated and secure performance for institutional users.</p>
+                <div style="margin-top: 15px;">
+                    <span class="maintainer-tag">Engineering & Packaging Partner</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="contact">
+    <p>&copy; 2026 Storcke64.com | Specialized Linux Technology Consulting</p>
+    <p>Contact: contact@storcke64.com</p>
+</footer>
+
+</body>
+</html>
