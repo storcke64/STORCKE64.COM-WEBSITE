@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storcke64 | Linux Software Packaging & Engineering</title>
+    <title>Storcke64 | Linux Software Development</title>
     <style>
         :root {
             --navy: #050a1f;
@@ -24,7 +24,6 @@
             scroll-behavior: smooth;
         }
 
-        /* --- Navigation Setup (400x100 Logo) --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -44,9 +43,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .logo-link:hover {
-            opacity: 0.85;
-        }
+        .logo-link:hover { opacity: 0.85; }
 
         .site-logo {
             display: block;
@@ -71,11 +68,8 @@
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: var(--accent-orange);
-        }
+        nav a:hover { color: var(--accent-orange); }
 
-        /* --- Hero Section --- */
         .hero {
             padding: 120px 8%;
             text-align: center;
@@ -115,10 +109,7 @@
             box-shadow: 0 6px 20px rgba(255, 140, 97, 0.5);
         }
 
-        /* --- Portfolio Styling --- */
-        .section-container {
-            padding: 80px 8%;
-        }
+        .section-container { padding: 80px 8%; }
 
         .section-title {
             text-align: center;
@@ -170,7 +161,7 @@
 
         .app-logo-container {
             width: 100%;
-            height: 200px; /* Slightly taller to accommodate the circular seal */
+            height: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -186,11 +177,10 @@
             object-fit: contain;
         }
 
-        /* --- Sizing fix for HTS Logo --- */
         img[src="hts-logo.png"] {
-            max-height: 190px; /* Allows the circular logo to expand further */
+            max-height: 190px;
             max-width: 95%;
-            transform: scale(1.1); /* Slight manual scale boost */
+            transform: scale(1.1);
         }
 
         .maintainer-tag {
@@ -224,60 +214,41 @@
 
 <nav>
     <a href="#" class="logo-link">
-        <img src="storcke64-logo.png" alt="Storcke64 Technology Consulting" class="site-logo">
+        <img src="storcke64-logo.png" alt="Storcke64" class="site-logo">
     </a>
     <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#apps">Portfolio</a></li>
-        <li><a href="#benefits">Institutional</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#apps">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <section class="hero">
-    <h1>Scaling Linux Software with Flatpak</h1>
-    <p>We specialize in Linux software packaging and the implementation of revolutionary software technology. We build the bridge between institutional needs and the Linux desktop.</p>
-    <a href="mailto:contact@storcke64.com" class="cta-button">Get a Packaging Consultation</a>
+    <h1>Linux Software Development</h1>
+    <p>Independent developer building open source applications for the Linux desktop. Focused on GTK, Flatpak packaging, and long-term software design.</p>
+    <a href="mailto:contact@storcke64.com" class="cta-button">Get in Touch</a>
 </section>
 
-<div class="section-container" id="services">
-    <h2 class="section-title">Our Expertise</h2>
+<div class="section-container" id="about">
+    <h2 class="section-title">What I Do</h2>
     <div class="grid-container">
         <div class="card">
-            <h3>Flatpak Engineering</h3>
-            <p>We create clean, professional Flatpak manifests and handle the technical heavy lifting of sandboxing and permission management.</p>
+            <h3>GTK Application Development</h3>
+            <p>Building native Linux desktop applications in C with GTK, WebKitGTK, and GStreamer for rich, performant user interfaces.</p>
         </div>
         <div class="card">
-            <h3>Flathub Approval</h3>
-            <p>We assist with the entire approval process for the Flathub app store, ensuring your software meets community standards and security checks.</p>
+            <h3>Flatpak Packaging</h3>
+            <p>Packaging Linux applications as Flatpaks for sandboxed, distribution-agnostic deployment across Fedora, Ubuntu, Debian, and other distributions.</p>
         </div>
         <div class="card">
-            <h3>Software Implementation</h3>
-            <p>Implementing revolutionary software technology for organizations that require stability, performance, and long-term support.</p>
-        </div>
-    </div>
-</div>
-
-<div class="section-container" id="benefits" style="background-color: #09112e;">
-    <h2 class="section-title">Flatpak for Industry & Institutions</h2>
-    <div class="grid-container">
-        <div class="card">
-            <h3>Sandboxed Security</h3>
-            <p>Isolate critical industrial software from the host system, protecting the core infrastructure from application-level vulnerabilities.</p>
-        </div>
-        <div class="card">
-            <h3>Immutable Updates</h3>
-            <p>Atomic updates ensure that missions-critical workstations remain stable; updates are safe, reproducible, and easily reversible.</p>
-        </div>
-        <div class="card">
-            <h3>Universal Standards</h3>
-            <p>Maintain one single package that runs flawlessly across RHEL, Ubuntu, Fedora, and Debian environments without re-engineering.</p>
+            <h3>Systems Programming</h3>
+            <p>Low-level software design in C, including embedded HTTP servers, video playback pipelines, and cross-platform compatibility work.</p>
         </div>
     </div>
 </div>
 
 <div class="section-container" id="apps">
-    <h2 class="section-title">Featured Flatpak Projects</h2>
+    <h2 class="section-title">Projects</h2>
     <div class="app-grid">
         <div class="app-card">
             <div class="app-logo-container">
@@ -285,9 +256,9 @@
             </div>
             <div class="app-content">
                 <h3>RC Basic Studio</h3>
-                <p>A powerful dialect of the BASIC programming language. Storcke64 identified the potential of this tool and officially packaged it as a Flatpak to enable universal Linux access.</p>
+                <p>A powerful dialect of the BASIC programming language. Packaged as a Flatpak to enable universal Linux access across all major distributions.</p>
                 <div style="margin-top: 15px;">
-                    <span class="maintainer-tag">Official Maintainer: Storcke64</span>
+                    <span class="maintainer-tag">Flatpak Maintainer</span>
                 </div>
             </div>
         </div>
@@ -297,10 +268,10 @@
                 <img src="hts-logo.png" alt="Human Time System Logo" class="project-logo">
             </div>
             <div class="app-content">
-                <h3>Human Time System</h3>
-                <p>The desktop client for the Human Time System. Engineered for precision and deployed via Flatpak to ensure isolated and secure performance for institutional users.</p>
+                <h3>HTS Time System</h3>
+                <p>A GTK desktop application implementing the Storcke Human Time System — an infinite, cyclical deep-time calendar with a video screensaver engine, global timezone display, and QR code output.</p>
                 <div style="margin-top: 15px;">
-                    <span class="maintainer-tag">Engineering & Packaging Partner</span>
+                    <span class="maintainer-tag">Original Developer</span>
                 </div>
             </div>
         </div>
@@ -308,7 +279,7 @@
 </div>
 
 <footer id="contact">
-    <p>&copy; 2026 Storcke64.com | Specialized Linux Technology Consulting</p>
+    <p>&copy; 2026 Storcke64.com</p>
     <p>Contact: contact@storcke64.com</p>
 </footer>
 
